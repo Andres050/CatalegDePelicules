@@ -11,7 +11,7 @@ public class Main {
     public static Product[] listProduct;
     static String login = "andres5";
     static String password = "andres12345A_";
-    static String url = "jdbc:mysql://localhost:3306/productos?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    static String url = "jdbc:mysql://localhost:3306/productos?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
     public static void main(String[] args) throws SQLException {
         /*
