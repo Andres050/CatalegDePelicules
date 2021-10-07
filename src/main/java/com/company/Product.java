@@ -13,6 +13,11 @@ public class Product {
         this.descriptPro = descriptPro;
         this.pricePro = pricePro;
     }
+    public Product (String namePro, String descriptPro, double pricePro) {
+        this.namePro =  namePro;
+        this.descriptPro = descriptPro;
+        this.pricePro = pricePro;
+    }
 
     public Product (String namePro) {
         this.namePro = namePro;
@@ -58,11 +63,11 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" +
-                "idPro=" + idPro +
-                ", namePro='" + namePro + '\'' +
-                ", descriptPro='" + descriptPro + '\'' +
-                ", pricePro=" + pricePro +
-                '}';
+        return "Product (" +
+                "idPro= " + idPro +
+                ", namePro= '" + namePro + '\'' +
+                ", descriptPro= '" + descriptPro + '\'' +
+                ", pricePro= " + pricePro +
+                ')';
     }
 }
