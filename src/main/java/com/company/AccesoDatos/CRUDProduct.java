@@ -4,8 +4,10 @@ import com.company.Main;
 import com.company.Product;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class CRUDProduct {
+public class CRUDProduct implements CRUDProductInterface{
 
     String login = "andres5";
     String password = "andres12345A_";
@@ -15,7 +17,6 @@ public class CRUDProduct {
         return DriverManager.getConnection(url, login, password);
     }
 
-    //METODOS QUE TENEMOS QUE CREAR (insert readAll readId update delete)
     public void insert(Product product) {
         Connection conn = null;
 
@@ -32,8 +33,10 @@ public class CRUDProduct {
             System.out.println(ex);
         }
     }
-    public void realAll(){
+
+    public List<Product> readAll(){
         Connection conn = null;
+        List<Product> products = new ArrayList<>();
 
         try {
             conn = connection();
@@ -44,15 +47,18 @@ public class CRUDProduct {
                 ResultSet result = sta.executeQuery("SELECT * FROM producto");
                 while(result.next()){
                     Product product = new Product(result.getInt("idPro"),result.getString("namePro"), result.getString("descriptPro"), result.getDouble("pricePro"));
-                    System.out.println(product.toString());
+                    products.add(product);
                 }
                 conn.close();
             }
         } catch(SQLException ex) {
             System.out.println(ex);
         }
+
+        return products;
     }
-    public void readById(int id){
+
+    public Product readById(int id){
         Connection connection = null;
 
         try {
@@ -61,18 +67,16 @@ public class CRUDProduct {
             if (connection != null) {
                 System.out.println("Conexión a base de datos ... Ok");
                 Statement sta = connection.createStatement();
-                ResultSet result = sta.executeQuery("SELECT * FROM producto");
-                while(result.next()){
-                    if (result.getInt("idPro")==id) {
-                        Product product = new Product(result.getInt("idPro"), result.getString("namePro"), result.getString("descriptPro"), result.getDouble("pricePro"));
-                        System.out.println(product.toString());
-                    }
-                }
+                ResultSet result = sta.executeQuery("SELECT * FROM producto where idPro=\""+id+"\"");
+                result.next();
+                Product product = new Product(result.getInt("idPro"), result.getString("namePro"), result.getString("descriptPro"), result.getDouble("pricePro"));
                 connection.close();
+                return product;
             }
         } catch(SQLException ex) {
             System.out.println(ex);
         }
+        return new Product("Vacio");
     }
     public void updateById(Product product, int id){
         Connection conn = null;
@@ -102,6 +106,21 @@ public class CRUDProduct {
                 String query = "delete from producto where idPro= '"+id+"'";
                 Statement sta = conn.createStatement();
                 sta.executeUpdate(query);
+                conn.close();
+            }
+        } catch(SQLException ex) {
+            System.out.println(ex);
+        }
+    }
+
+    public void deleteAllINFOonTABLE(){
+        try {
+            Connection conn = connection();
+
+            if (conn != null) {
+                System.out.println("Connexion a base de dates ... Ok");
+                Statement sta = conn.createStatement();
+                sta.executeUpdate("DELETE FROM Productos");
                 conn.close();
             }
         } catch(SQLException ex) {

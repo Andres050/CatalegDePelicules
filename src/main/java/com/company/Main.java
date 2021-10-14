@@ -3,6 +3,7 @@ package com.company;
 import com.company.AccesoDatos.CRUDProduct;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -10,10 +11,12 @@ public class Main {
         CRUDProduct crudProduct = new CRUDProduct();
         //crudProduct.updateById(new Product("update","funciona bien suuu", 65), 3);
         //crudProduct.insert(new Product("Andres","Esta avanzando",100));
-        //crudProduct.readById(3);
+        System.out.println(crudProduct.readById(3));
         //crudProduct.deleteById(2);
-        crudProduct.realAll();
-
+        ArrayList<Product> products = (ArrayList<Product>) crudProduct.readAll();
+        for (Product product : products) {
+            System.out.println(product);
+        }
         /*
         Product productOnlyName = new Product("PlayStation 4");
         Product productOnlyId = new Product("Nintendo Switch
