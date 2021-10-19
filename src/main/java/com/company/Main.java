@@ -2,21 +2,29 @@ package com.company;
 
 import com.company.AccesoDatos.CRUDProduct;
 
+import javax.swing.*;
+import java.awt.*;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException {
-        CRUDProduct crudProduct = new CRUDProduct();
+    public static void main(String[] args) {
+        Grafic frame = new Grafic("MYSQL");
+        frame.setVisible(true);
+    }
+
+
         //crudProduct.updateById(new Product("update","funciona bien suuu", 65), 3);
         //crudProduct.insert(new Product("Andres","Esta avanzando",100));
-        System.out.println(crudProduct.readById(3));
+        //System.out.println(crudProduct.readById(3));
         //crudProduct.deleteById(2);
-        ArrayList<Product> products = (ArrayList<Product>) crudProduct.readAll();
-        for (Product product : products) {
-            System.out.println(product);
-        }
+        //ArrayList<Product> products = (ArrayList<Product>) crudProduct.readAll();
+        //for (Product product : products) {
+        //    System.out.println(product);
+        //}
         /*
         Product productOnlyName = new Product("PlayStation 4");
         Product productOnlyId = new Product("Nintendo Switch
@@ -56,5 +64,4 @@ public class Main {
         System.out.println("SHOW PRODUCT:"+randomPosition);
         System.out.println(getProductWithID(randomPosition));
          */
-    }
 }

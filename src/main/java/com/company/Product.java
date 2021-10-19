@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Scanner;
+
 public class Product {
 
     private int idPro;
@@ -17,6 +19,8 @@ public class Product {
         this.namePro =  namePro;
         this.descriptPro = descriptPro;
         this.pricePro = pricePro;
+    }
+    public Product () {
     }
 
     public Product (String namePro) {
@@ -69,5 +73,31 @@ public class Product {
                 ", descriptPro= '" + descriptPro + '\'' +
                 ", pricePro= " + pricePro +
                 ')';
+    }
+
+    public Product createProduct(){
+        Scanner scanner = new Scanner(System.in);
+        String name, descript; double price;
+        while (true) {
+            System.out.print("Select the name of the product: ");
+            name = scanner.next();
+            if(name.length()>15) {
+                System.out.println("Name too long!!");
+            } else {
+                break;
+            }
+        }
+        while (true) {
+            System.out.print("Select the descript of the product: ");
+            descript = scanner.next();
+            if (descript.length()>30) {
+                System.out.println("Name too long!!");
+            } else {
+                break;
+            }
+        }
+        System.out.print("Select the price of the product: ");
+        price = scanner.nextDouble();
+        return new Product(name,descript,price);
     }
 }

@@ -1,34 +1,61 @@
 package com.company;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Grafic {
+public class Grafic extends JFrame{
     private JButton INSERTARProductButton;
     private JButton LEERAllButton;
     private JButton LEEROnlyIDButton;
     private JButton UPDATEProductButton;
     private JButton DELETEProductOnlyIDButton;
+    private JPanel mainPanel;
 
+    private Business business = new Business();
 
-    //GET
+    public Grafic(String title) {
+        super(title);
 
-    public JButton getINSERTARProductButton() {
-        return INSERTARProductButton;
-    }
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setContentPane(mainPanel);
+        this.pack();
 
-    public JButton getLEERAllButton() {
-        return LEERAllButton;
-    }
-
-    public JButton getLEEROnlyIDButton() {
-        return LEEROnlyIDButton;
-    }
-
-    public JButton getUPDATEProductButton() {
-        return UPDATEProductButton;
-    }
-
-    public JButton getDELETEProductOnlyIDButton() {
-        return DELETEProductOnlyIDButton;
+        INSERTARProductButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                business.addProduct();
+                JOptionPane.showMessageDialog(null,"Operation finished!!!");
+            }
+        });
+        LEERAllButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                business.listProduct();
+                JOptionPane.showMessageDialog(null,"Operation finished!!!");
+            }
+        });
+        LEEROnlyIDButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                business.searchProduct();
+                JOptionPane.showMessageDialog(null,"Operation finished!!!");
+            }
+        });
+        UPDATEProductButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                business.updateProduct();
+                JOptionPane.showMessageDialog(null,"Operation finished!!!");
+            }
+        });
+        DELETEProductOnlyIDButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                business.restartCataleg();
+                JOptionPane.showMessageDialog(null,"Operation finished!!!");
+            }
+        });
     }
 }
