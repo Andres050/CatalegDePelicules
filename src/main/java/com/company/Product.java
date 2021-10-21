@@ -75,7 +75,7 @@ public class Product {
                 ')';
     }
 
-    public Product createProduct(){
+    /*public Product createProduct(){
         Scanner scanner = new Scanner(System.in);
         String name, descript; double price;
         while (true) {
@@ -99,5 +99,12 @@ public class Product {
         System.out.print("Select the price of the product: ");
         price = scanner.nextDouble();
         return new Product(name,descript,price);
+    }*/
+    public static boolean isString(String string, int length){
+        return string.length() <= length;
+    }
+    
+    public static double isDouble(String string){
+        return Double.parseDouble(string);
     }
 }

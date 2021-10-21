@@ -120,7 +120,7 @@ public class CRUDProduct implements CRUDProductInterface{
             if (conn != null) {
                 System.out.println("Connexion a base de dates ... Ok");
                 Statement sta = conn.createStatement();
-                sta.executeUpdate("DELETE FROM Productos");
+                sta.executeUpdate("DELETE FROM producto");
                 conn.close();
             }
         } catch(SQLException ex) {
