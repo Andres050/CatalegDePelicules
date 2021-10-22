@@ -26,6 +26,11 @@ public class Grafic extends JFrame{
     private JTextField textField5;
     private JButton DELETEALLTABLEButton;
     private JTextField textField6;
+    private JTextField textFieldUserName;
+    private JTextField textFieldPassword;
+    private JTextField textFieldDataBase;
+    private JTextField textFieldTable;
+    private JButton GETTABLEButton;
 
     private final Business business = new Business();
     private final CRUDProduct crudProduct = new CRUDProduct();
@@ -37,7 +42,6 @@ public class Grafic extends JFrame{
         this.setContentPane(mainPanel);
         this.setSize(1000, 400);
         this.pack();
-        DefaultTableModel model = newModel();
 
         table1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         table1.setEnabled(true);
@@ -101,7 +105,7 @@ public class Grafic extends JFrame{
         model.addColumn("Name Product");
         model.addColumn("Description");
         model.addColumn("Price");
-        model.addRow(new Object[]{"ID Product", "Name Product", "Description", "Price"});
+        //model.addRow(new Object[]{"ID Product", "Name Product", "Description", "Price"});
         return model;
     }
 

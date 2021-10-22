@@ -11,7 +11,9 @@ public class CRUDProduct implements CRUDProductInterface{
 
     String login = "andres5";
     String password = "andres12345A_";
-    String url = "jdbc:mysql://localhost:3306/productos?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    String table = "productos";
+    //URL School
+    String url = "jdbc:mysql://localhost:3306/"+table+"?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
     public Connection connection() throws SQLException {
         return DriverManager.getConnection(url, login, password);
@@ -126,5 +128,28 @@ public class CRUDProduct implements CRUDProductInterface{
         } catch(SQLException ex) {
             System.out.println(ex);
         }
+    }
+    public String[] getColumnName(){
+        try {
+            Connection conn = connection();
+
+            if (conn != null) {
+                System.out.println("Connexion a base de dates ... Ok");
+                Statement sta = conn.createStatement();
+                ResultSet resultSet = sta.executeQuery("SELECT *FROM "+table);
+                ResultSetMetaData md = (ResultSetMetaData) resultSet.getMetaData();
+                int counter = md.getColumnCount();
+                String colName[] = new String[counter];
+                System.out.println("The column names are as follows:");
+                for (int loop = 1; loop <= counter; loop++) {
+                    colName[loop-1] = md.getColumnLabel(loop);
+                    System.out.println(colName[loop-1]);
+                }
+                conn.close();
+            }
+        } catch(SQLException ex) {
+            System.out.println(ex);
+        }
+        return new String[0];
     }
 }
