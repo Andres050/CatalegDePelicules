@@ -26,11 +26,6 @@ public class Grafic extends JFrame{
     private JTextField textField5;
     private JButton DELETEALLTABLEButton;
     private JTextField textField6;
-    private JTextField textFieldUserName;
-    private JTextField textFieldPassword;
-    private JTextField textFieldDataBase;
-    private JTextField textFieldTable;
-    private JButton GETTABLEButton;
 
     private final Business business = new Business();
     private final CRUDProduct crudProduct = new CRUDProduct();
